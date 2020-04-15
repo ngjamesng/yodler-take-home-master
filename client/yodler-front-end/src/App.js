@@ -1,8 +1,9 @@
 import React from 'react';
-// import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route } from "react-router-dom";
 import AdminView from "./AdminView"; 
 import Home from "./Home"; 
+import User from "./User";
 import RegistrationForm from "./RegistrationForm";
 
 
@@ -15,6 +16,9 @@ function App() {
       </Route>
       <Route exact path="/admin">
         <AdminView />
+      </Route>
+      <Route exact path="/users/:id">
+        <User />
       </Route>
       <Route exact path="/">
         <Home />

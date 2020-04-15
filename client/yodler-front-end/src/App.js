@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+// import './App.css';
 import { BrowserRouter, Route } from "react-router-dom";
 import AdminView from "./AdminView"; 
 import Home from "./Home"; 

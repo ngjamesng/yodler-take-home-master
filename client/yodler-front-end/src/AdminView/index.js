@@ -5,15 +5,25 @@ import { Table } from "react-bootstrap";
 
 function AdminView() {
   const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading ] = useState(true);
+  
+  const deleteUser = async (id) =>{
+    let response = await axios.delete(`${BACKEND_API_URL}/users/${id}`);
+    response.status === 204 && setUsers((users) => users.filter(u=> u.id !== id));
+  }
 
   useEffect(() => {
     async function getUsers() {
       let response = await axios.get(`${BACKEND_API_URL}/users`);
       setUsers(response.data);
+      response && setIsLoading(false);
     }
     getUsers();
   }, [])
 
+  if (isLoading){
+    return (<h1>"Loading..."</h1>)
+  }
 
   return (
     <>
@@ -26,6 +36,7 @@ function AdminView() {
             <th>First Name</th>
             <th>Last Name</th>
             <th>State</th>
+            <th>Delete?</th>
           </tr>
         </thead>
         <tbody>
@@ -36,6 +47,7 @@ function AdminView() {
               <td>{u.firstName}</td>
               <td>{u.lastName}</td>
               <td>{u.state}</td>
+              <td><button onClick={()=>deleteUser(u.id)}>delete</button></td>
             </tr>
           )
           )}

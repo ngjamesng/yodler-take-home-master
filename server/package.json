@@ -12,7 +12,7 @@
     "debug": "~2.6.9",
     "express": "^4.17.1",
     "express-winston": "^4.0.3",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "serve-favicon": "^2.5.0",
     "winston": "^0.8.3"
   }
